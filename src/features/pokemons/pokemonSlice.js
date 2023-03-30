@@ -144,42 +144,9 @@ export const pokemonSlice = createSlice({
     },
     [getPokemonById.fulfilled]: (state, action) => {
       state.loading = false;
-      if (
-        // id = 1
-        action.payload[0].id === 1 &&
-        action.payload[1].id === 2 &&
-        action.payload[2].id === 721
-      ) {
-        state.pokemon.pokemon = action.payload[0];
-        state.pokemon.nextPokemon = action.payload[1];
-        state.pokemon.previousPokemon = action.payload[2];
-      } else if (
-        // id = 721
-        action.payload[0].id === 1 &&
-        action.payload[1].id === 720 &&
-        action.payload[2].id === 721
-      ) {
-        state.pokemon.pokemon = action.payload[2];
-        state.pokemon.nextPokemon = action.payload[0];
-        state.pokemon.previousPokemon = action.payload[1];
-      } else if (
-        // 720
-        action.payload[0].id === 719 &&
-        action.payload[1].id === 720 &&
-        action.payload[2].id === 721
-      ) {
-        state.pokemon.pokemon = action.payload[1];
-        state.pokemon.nextPokemon = action.payload[2];
-        state.pokemon.previousPokemon = action.payload[0];
-      } else if (action.payload[2].id === 721) {
-        state.pokemon.pokemon = action.payload[2];
-        state.pokemon.nextPokemon = action.payload[0];
-        state.pokemon.previousPokemon = action.payload[1];
-      } else {
-        state.pokemon.pokemon = action.payload[1];
-        state.pokemon.nextPokemon = action.payload[2];
-        state.pokemon.previousPokemon = action.payload[0];
-      }
+      state.pokemon.pokemon = action.payload[0];
+      state.pokemon.nextPokemon = action.payload[2];
+      state.pokemon.previousPokemon = action.payload[1];
     },
     [addPokemon.fulfilled]: (state) => {
       state.loading = false;
